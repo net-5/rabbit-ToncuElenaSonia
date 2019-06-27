@@ -5,88 +5,59 @@ using System.Text;
 
 namespace Rabbit
 {
+    public enum EyesType
+    {
+        Blue,
+        Red,
+        Black
+    }
+    public enum FurType
+    {
+        White,
+        Brown,
+        Black,
+        Grey
+    }
+    public enum GenderType
+    {
+        Male,
+        Female
+    }
     class RabbitClass
     {
-        public string eyesRabbit;
-        public string furOfRabbit;
-        public string gender;
-        public int ageOfRabbit;
-
-        //•	a rabbit can have Blue, Red or Black eyes
-        public string EyesRabbit
-        {
-            get
-            {
-                return this.eyesRabbit;
-            }
-            set
-            {
-                if (value != "blue" && value != "red" && value != "black")
-                {
-                    Console.WriteLine($"Color of the eyes cannot  be {value}");
-                }
-                else
-                {
-                    this.eyesRabbit = value;
-                    Console.WriteLine($"The rabbit has {this.EyesRabbit} eyes");
-                }
-            }
-        }
-        //•	a rabbit's fur can be white, brown, black or grey
-        //•	it has a gender
-        public string FurOfRabbit
-        {
-            get
-            {
-                return this.furOfRabbit;
-            }
-            set
-            {
-                if (value != "white" && value != "brown" && value != "black" && value != "grey")
-                {
-                    Console.WriteLine($"Color of the fur cannot  be {value}");
-                }
-                else
-                {
-                    this.furOfRabbit = value;
-                    Console.WriteLine($"The color of rabbit's fur is: {this.furOfRabbit}");
-                }
-            }
-        }
-        //•	it has a gender
-        public string Gender
-        {
-            get
-            {
-                return this.gender;
-            }
-            set
-            {
-                if (value != "male" && value != "female")
-                {
-                    Console.WriteLine("The gender is not ok!");
-                }
-                else
-                {
-                    this.gender = value;
-                    Console.WriteLine($"My rabbit has the gender:{this.Gender}");
-                }
-            }
-        }
-        //•	has a birth date, and based on that you should be able to see how old the rabbit is
+        
+        private int ageOfRabbit;
+        public EyesType EyesRabbit { get; set; }
+        public FurType FurOfRabbit { get; set; }
+        public GenderType Gender { get; set; }
+        public DateTime BirthdayRabbit { get; set; }
         public int AgeOfRabbit
         {
             get
             {
-                var yearOfBirthday = DateTime.Parse("10/20/1989", new CultureInfo("en-US")).Year;
-                var age = DateTime.Now.Year - yearOfBirthday;
-                return age;
-            }
-            set
+                ageOfRabbit = DateTime.Now.Year - BirthdayRabbit.Year;
+                return ageOfRabbit;
+            }     
+        }
+        public RabbitClass(EyesType eyesRabbit, FurType furOfRabbit, GenderType gender, DateTime birthdayRabbit )
+        {
+            EyesRabbit = eyesRabbit;
+            FurOfRabbit = furOfRabbit;
+            Gender = gender;
+            BirthdayRabbit = birthdayRabbit;
+        }
+        //•	a rabbit can have Blue, Red or Black eyes
+        //•	a rabbit's fur can be white, brown, black or grey
+        //•	it has a gender
+        //•	has a birth date, and based on that you should be able to see how old the rabbit is
+        public string AboutRabbit
+        {
+            get
             {
-                this.ageOfRabbit = value;
+                return $"My rabbit has {EyesRabbit} eyes, {FurOfRabbit} fur and {Gender} gender and it has {AgeOfRabbit} years";
             }
         }
+        
         //•	we also know that a rabbit is a mammal that moves, sleeps and eats
         public void MoveRabbit()
         {
