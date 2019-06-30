@@ -30,7 +30,7 @@ namespace Rabbit
         public EyesType EyesRabbit { get; set; }
         public FurType FurOfRabbit { get; set; }
         public GenderType Gender { get; set; }
-        public DateTime BirthdayRabbit { get; set; }
+        public DateTime BirthdayRabbit { get; }
         public int AgeOfRabbit
         {
             get
